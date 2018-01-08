@@ -1,15 +1,14 @@
-c-fft
-=====
+1-D FFT Nerual Network benchamrk
+------------------------------------
 
-C-Implementations of FFT Algorithms:
+-C-Implementations of typical FFT Algorithms and the nerual network approach:
 
-run a simple make in c-fft directory and both test and benchmark 
-will be compiled.
+-Run a simple make in the directory to compile the benchmark. 
 
-==================================================================
+-The nerual network has trained using 100k samples. Feed frowarding are implemented (matrices multiplication).
+  Folder "weights" contain all wights learned from training
 
-test: tests the result of all implementations included in the 
-	  library are correct and equivalent
+You only need to look at/modify/run benchmark.c 
 
-benchmark: compares the speed of each implementation for 10000 
-		   computations of an input with n=30
+Benchmark: compares the speed of each implementation for 1000 times of computations of randomly generated time-domain
+	    signal with length 32. 
