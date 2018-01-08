@@ -23,7 +23,7 @@ const char* keys =
     "{@image|./lena.jpg|input image file}"
 };
 
-int dft_efficient(double **spectrum, double **spatial){
+int dft_for_training(double **spectrum, double **spatial){
 
 	double sum_real = 0;
 	double sum_img = 0;
@@ -120,9 +120,6 @@ int main(int argc, const char ** argv)
 
     Mat img = imread(filename, IMREAD_GRAYSCALE);
 
-	//imshow("spatial magnitude", img);
-    //waitKey();
-
 	for (int i = 0; i < N_ROWS; i++){
 	   	for (int j = 0; j < N_COLS; j++){
 	        spatial[i][j] = img.at<uchar>(i,j);
@@ -144,22 +141,18 @@ int main(int argc, const char ** argv)
 	Mat complexImg;
 	merge(planes, 2, complexImg);
 
-	//imshow("spatial magnitude 2", complexImg);
-    //waitKey();
-
-
 	/*------------------------DFT--------------------------*/
 
 	// OpenCV Implementation
-	//dft(complexImg, complexImg);
+	dft(complexImg, complexImg);
 
 	//Implementation For training (new)
-	dft_efficient(spectrum,spatial);
+	//dft_for_training(spectrum,spatial);
 
 	// NN Implementation
 	//NN_dft();
 
-	
+	/*
 	Mat img_calc = imread(filename, IMREAD_GRAYSCALE);
 	for (int i = 0; i < N_ROWS; i++){
 	   	for (int j = 0; j < N_COLS; j++){
@@ -189,22 +182,13 @@ int main(int argc, const char ** argv)
 	  }
 	}
 	imshow("spatial magnitude: img_calc", img_calc);
-    waitKey();
-	
+   	 waitKey();
+	*/
 
 
 
 
 	/*-----------------POST PROCESSING---------------------*/
-
-	/*
-	for(int j=0;j<mag.rows;j++) {
-	  for (int i=0;i<mag.cols;i++){ 
-	  	complexImg.at<uchar>(i,j) = result[i][j];
-		//cout<<pixelValue<<",";	
-	  }
-	}
-	*/	
 	
 	// compute log(1 + sqrt(Re(DFT(img))**2 + Im(DFT(img))**2))
 	split(complexImg, planes);
@@ -212,19 +196,13 @@ int main(int argc, const char ** argv)
 	Mat mag = planes[0];
 	mag += Scalar::all(1);
 	log(mag, mag);
-	
-	//imshow("spectrum magnitude", mag);
-    //waitKey();
 
 	// crop the spectrum, if it has an odd number of rows or columns
 	mag = mag(Rect(0, 0, mag.cols & -2, mag.rows & -2));
 
 	int cx = mag.cols/2;
 	int cy = mag.rows/2;
-
-	//imshow("spectrum magnitude", mag);
-    //waitKey();
-
+	
 	// rearrange the quadrants of Fourier image
 	// so that the origin is at the image center
 	Mat tmp;
@@ -241,27 +219,10 @@ int main(int argc, const char ** argv)
 	q2.copyTo(q1);
 	tmp.copyTo(q2);
 
-	//imshow("spectrum magnitude", mag);
-    //waitKey();
-
-	/*
-	for(int i=0;i<mag.rows;i++) {
-	  for (int j=0;j<mag.cols;j++){ 
-		cout<<(int)mag.at<uchar>(i,j)<<",";	
-	  }
-	}
-	*/
-
 	normalize(mag, mag, 0, 1, NORM_MINMAX);
-/*
-	for(int i=0;i<mag.rows;i++) {
-	  for (int j=0;j<mag.cols;j++){ 
-		cout<<(int)mag.at<uchar>(i,j)<<",";	
-	  }
-	}
-*/
-	//imshow("spectrum magnitude", mag);
-    //waitKey();
+
+	imshow("spectrum magnitude", mag);
+    	waitKey();
 
     return 0;
 }
