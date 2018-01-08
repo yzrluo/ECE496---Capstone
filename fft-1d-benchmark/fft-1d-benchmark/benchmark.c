@@ -108,7 +108,7 @@ int main(void) {
 	char *ptr;
 	FILE *fp;
 	char str[20];
-	char* filename = "/home/junjian/Desktop/weights/input_layer_1_kernal.txt";
+	char* filename = "./weights/input_layer_1_kernal.txt";
 	fp = fopen(filename, "r");
 	if (fp == NULL){
 		printf("Could not open file %s",filename);
@@ -126,7 +126,7 @@ int main(void) {
 	fclose(fp);
 
 	// weights_1_2
-	char* filename_4 = "/home/junjian/Desktop/weights/layer_1_2_kernal.txt";
+	char* filename_4 = "./weights/layer_1_2_kernal.txt";
 	fp = fopen(filename_4, "r");
 	if (fp == NULL){
 		printf("Could not open file %s",filename);
@@ -144,7 +144,7 @@ int main(void) {
 	fclose(fp);
 
 	// layer_1_bias
-	char* filename_2 = "/home/junjian/Desktop/weights/input_layer_1_bias.txt";
+	char* filename_2 = "./weights/input_layer_1_bias.txt";
 	fp = fopen(filename_2, "r");
 	if (fp == NULL){
 		printf("Could not open file %s",filename);
@@ -157,7 +157,7 @@ int main(void) {
 	fclose(fp);
 
 	// output_bias
-	char* filename_3 = "/home/junjian/Desktop/weights/layer_1_2_bias.txt";
+	char* filename_3 = "./weights/layer_1_2_bias.txt";
 	fp = fopen(filename_3, "r");
 	if (fp == NULL){
 		printf("Could not open file %s",filename);
