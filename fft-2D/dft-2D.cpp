@@ -20,7 +20,7 @@ using namespace std;
 
 const char* keys =
 {
-    "{@image|./data/lena.jpg|input image file}"
+    "{@image|./lena.jpg|input image file}"
 };
 
 int dft_efficient(double **spectrum, double **spatial){
