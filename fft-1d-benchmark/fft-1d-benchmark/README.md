@@ -1,4 +1,4 @@
-1-D FFT Nerual Network benchamrk
+1-D FFT Nerual Network Implementation and Benchamrk
 ------------------------------------
 
 -C-Implementations of typical FFT Algorithms and the nerual network approach:
