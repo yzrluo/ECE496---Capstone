@@ -152,7 +152,7 @@ int main(int argc, const char ** argv)
 	// NN Implementation
 	//NN_dft();
 
-	/*
+	/* //Uncomment the following when using dft_for_training() or NN_dft()
 	Mat img_calc = imread(filename, IMREAD_GRAYSCALE);
 	for (int i = 0; i < N_ROWS; i++){
 	   	for (int j = 0; j < N_COLS; j++){
