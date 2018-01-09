@@ -5,7 +5,7 @@
 
 - Run a simple make in the directory to compile the benchmark. 
 
-- The nerual network has trained using 100k samples. Feed frowarding are implemented (matrices multiplication).
+- The nerual network has been trained using 100k samples. Feed frowarding are implemented (matrices multiplication).
   Folder "weights" contain all wights learned from training
 
 - You only need to look at/modify/run benchmark.c 
