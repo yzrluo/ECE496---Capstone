@@ -95,7 +95,7 @@ int NN_dft(double **spectrum, double **spatial){
 
 	double row_transforms_real[DIM][DIM];
 	double row_transforms_imag[DIM][DIM];
-
+//
 	// NN matrices (real)
 	double signal[SIG_N][1];
     double layer_1[NUM_NEURONS][1];
