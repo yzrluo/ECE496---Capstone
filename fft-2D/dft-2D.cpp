@@ -600,10 +600,10 @@ int NN_dft_naive(double **spectrum, double **spatial){
 		for (int v=0;v<DIM;v++){
 
 			// Inner transform: 
-			// calculate the transform of each row and store them
+			// 1-D FFT of rows and store results
 			for (int row=0;row<DIM;row++){
 				//---------------------------------------------------/
-				//------------------Feed Forwarding-----------------/
+				//--Feed Forwarding (instead of the original for loop)
 				for (int n=0; n < SIG_N; n++) {
 					signal[n][0] = spatial[row][n];
 				}							
