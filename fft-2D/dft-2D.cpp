@@ -50,9 +50,9 @@ int dft_for_training(double **spectrum, double **spatial){
 		for (int v=0;v<DIM;v++){
 
 			// Inner transform: 
-			// calculate the transform of each row and store them
+			// 1-D FFT of rows and store results
 			for (int row=0;row<DIM;row++){
-				/*-----------NN 1 will learn this part-----------*/
+				/*-----------NN will learn this part-----------*/
 				for (int n=0;n<DIM;n++){
 					sum_real += (spatial[row][n] * 
 							cos(2*PI*(1.0*n*v/DIM)) ) / DIM;
@@ -66,8 +66,8 @@ int dft_for_training(double **spectrum, double **spatial){
 				sum_img = 0;
 			}
 
-			/*-----------NN 2 will learn this part-------------*/
-			// Outer tansform:
+			/*-----------NN will learn this part-------------*/
+			// Outer tansform (1D-FFT of columns):
 			for (int m=0;m<DIM;m++){
 				sum_real_2 += (row_transforms_real[m] * 
 						cos(2*PI*(1.0*m*u/DIM)) ) / DIM;
